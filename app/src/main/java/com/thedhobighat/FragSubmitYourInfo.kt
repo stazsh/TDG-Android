@@ -16,6 +16,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import retrofit2.HttpException
+import retrofit2.Response
 import retrofit2.create
 import java.io.IOException
 
@@ -58,10 +59,13 @@ class FragSubmitYourInfo : Fragment() {
         view.findViewById<ConstraintLayout>(R.id.place_order_btn).setOnClickListener {
             lifecycleScope.launchWhenCreated {
                 val address = view.findViewById<EditText>(R.id.et_address).text.toString()
+                val name = view.findViewById<EditText>(R.id.et_full_name).text.toString()
+                val phone = view.findViewById<EditText>(R.id.et_phone).text.toString()
+
                 val response = try {
                     api.postNewOrder(
                         "Bearer ${sharedPreferences?.getString("jwt", "NULL")}",
-                        PostOrderReq(address)
+                        PostOrderReq(name, address, phone)
                     )
                 } catch(e: IOException) {
                     Toast.makeText(activity, "IOException, you might not have internet connection", Toast.LENGTH_SHORT).show()
@@ -69,10 +73,21 @@ class FragSubmitYourInfo : Fragment() {
                 } catch (e: HttpException) {
                     Toast.makeText(activity, e.message, Toast.LENGTH_SHORT).show()
                     return@launchWhenCreated
+                } catch (e: Exception) {
+                    Log.i("error occurred while submitting", e.stackTraceToString())
+                    return@launchWhenCreated
                 }
 
-                if (response.body() != null)
-                    Toast.makeText(activity, "Order has been placed \uD83C\uDF89", Toast.LENGTH_LONG).show()
+                if (response.isSuccessful) {
+                    Toast.makeText(
+                        activity,
+                        "Order has been placed \uD83C\uDF89",
+                        Toast.LENGTH_LONG
+                    ).show()
+                    Log.i("submit response", response.body().toString())
+                } else {
+                    response.errorBody()?.let { it1 -> Log.i("error submit", it1.string()) }
+                }
             }
 
             parentFragmentManager.beginTransaction().apply {
