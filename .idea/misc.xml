@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="app/src/main/res/drawable/ic_dry_wash.xml" value="0.3225" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.3225" />
+        <entry key="app/src/main/res/drawable/round_all_around_but_darkazure.xml" value="0.3395" />
+        <entry key="app/src/main/res/drawable/round_all_around_but_darkazure_and_rounder.xml" value="0.3395" />
+        <entry key="app/src/main/res/drawable/round_all_around_but_grey.xml" value="0.3395" />
+        <entry key="app/src/main/res/drawable/round_all_around_but_red.xml" value="0.3395" />
+        <entry key="app/src/main/res/drawable/rounded_all_around.xml" value="0.3535" />
+        <entry key="app/src/main/res/drawable/rounded_top_rectangle.xml" value="0.3535" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="app/src/main/res/layout/choose_items.xml" value="0.4" />
+        <entry key="app/src/main/res/layout/frag_home.xml" value="0.3494791666666667" />
+        <entry key="app/src/main/res/layout/fragment_frag_choose_items.xml" value="0.26811594202898553" />
+        <entry key="app/src/main/res/layout/fragment_frag_home.xml" value="0.26811594202898553" />
+        <entry key="app/src/main/res/layout/payment.xml" value="0.4" />
+        <entry key="app/src/main/res/layout/submit_your_info.xml" value="0.4" />
+        <entry key="app/src/main/res/layout/track_your_order.xml" value="0.4" />
+        <entry key="app/src/main/res/layout/what_wash.xml" value="0.6" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.3225" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.3545" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

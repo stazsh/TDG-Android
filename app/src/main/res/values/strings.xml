@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">The Dhobi Ghat</string>
+    <string name="wall_desc">Chair, basket and a white wall</string>
+    <string name="wall_text">Is your laundry basket full?</string>
+    <string name="header_text">Welcome to \nThe Dhobi Ghat</string>
+    <string name="subheader_text">Choose the laundry service which you are interested in today</string>
+    <string name="tile1">Dry Wash</string>
+    <string name="choose_items">Choose Items</string>
+    <string name="blazer">Blazer</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
