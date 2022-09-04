@@ -5,55 +5,104 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.navigation.Navigation
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [FragChooseItems.newInstance] factory method to
- * create an instance of this fragment.
- */
 class FragChooseItems : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.frag_choose_items, container, false)
-    }
+        val view = inflater.inflate(R.layout.frag_choose_items, container, false)
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment FragChooseItems.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            FragChooseItems().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+        view.findViewById<Button>(R.id.blazer_up).setOnClickListener{
+            val item = view.findViewById<TextView>(R.id.blazer_count)
+            val newCount = Integer.parseInt(item.text.toString()) - 1
+            item.text = newCount.toString()
+        }
+        view.findViewById<Button>(R.id.blazer_down).setOnClickListener{
+            val item = view.findViewById<TextView>(R.id.blazer_count)
+            val newCount = Integer.parseInt(item.text.toString()) + 1
+            item.text = newCount.toString();
+        }
+
+        view.findViewById<Button>(R.id.shirt_up).setOnClickListener{
+            val item = view.findViewById<TextView>(R.id.shirt_count)
+            val newCount = Integer.parseInt(item.text.toString()) - 1
+            item.text = newCount.toString()
+        }
+        view.findViewById<Button>(R.id.shirt_down).setOnClickListener{
+            val item = view.findViewById<TextView>(R.id.shirt_count)
+            val newCount = Integer.parseInt(item.text.toString()) + 1
+            item.text = newCount.toString()
+        }
+
+        view.findViewById<Button>(R.id.pant_up).setOnClickListener{
+            val item = view.findViewById<TextView>(R.id.pant_count)
+            val newCount = Integer.parseInt(item.text.toString()) - 1
+            item.text = newCount.toString()
+        }
+        view.findViewById<Button>(R.id.pant_down).setOnClickListener{
+            val item = view.findViewById<TextView>(R.id.pant_count)
+            val newCount = Integer.parseInt(item.text.toString()) + 1
+            item.text = newCount.toString()
+        }
+
+        view.findViewById<Button>(R.id.saree_up).setOnClickListener{
+            val item = view.findViewById<TextView>(R.id.saree_count)
+            val newCount = Integer.parseInt(item.text.toString()) - 1
+            item.text = newCount.toString()
+        }
+        view.findViewById<Button>(R.id.saree_down).setOnClickListener{
+            val item = view.findViewById<TextView>(R.id.saree_count)
+            val newCount = Integer.parseInt(item.text.toString()) + 1
+            item.text = newCount.toString()
+        }
+
+        view.findViewById<Button>(R.id.ladup_up).setOnClickListener{
+            val item = view.findViewById<TextView>(R.id.ladup_count)
+            val newCount = Integer.parseInt(item.text.toString()) - 1
+            item.text = newCount.toString()
+        }
+        view.findViewById<Button>(R.id.ladup_down).setOnClickListener{
+            val item = view.findViewById<TextView>(R.id.ladup_count)
+            val newCount = Integer.parseInt(item.text.toString()) + 1
+            item.text = newCount.toString()
+        }
+
+        view.findViewById<Button>(R.id.laddown_up).setOnClickListener{
+            val item = view.findViewById<TextView>(R.id.laddown_count)
+            val newCount = Integer.parseInt(item.text.toString()) - 1
+            item.text = newCount.toString()
+        }
+        view.findViewById<Button>(R.id.laddown_down).setOnClickListener{
+            val item = view.findViewById<TextView>(R.id.laddown_count)
+            val newCount = Integer.parseInt(item.text.toString()) + 1
+            item.text = newCount.toString()
+        }
+
+        view.findViewById<Button>(R.id.others_up).setOnClickListener{
+            val item = view.findViewById<TextView>(R.id.others_count)
+            val newCount = Integer.parseInt(item.text.toString()) - 1
+            item.text = newCount.toString()
+        }
+        view.findViewById<Button>(R.id.others_down).setOnClickListener{
+            val item = view.findViewById<TextView>(R.id.others_count)
+            val newCount = Integer.parseInt(item.text.toString()) + 1
+            item.text = newCount.toString()
+        }
+
+        view.findViewById<ConstraintLayout>(R.id.process_order_btn).setOnClickListener{
+            Navigation.findNavController(view).navigate(R.id.action_fragChooseItems_to_fragSubmitYourInfo)
+        }
+
+        view.findViewById<ConstraintLayout>(R.id.navigate_back).setOnClickListener{
+            Navigation.findNavController(view).navigate(R.id.action_fragChooseItems_to_fragHome)
+        }
+        return view
     }
 }

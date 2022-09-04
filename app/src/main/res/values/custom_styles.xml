@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="rounded_react_top">
+    <style name="rounded_rect_top">
         <item name="cornerSizeTopRight">10%</item>
         <item name="cornerSizeTopLeft">10%</item>
     </style>
@@ -11,7 +11,14 @@
         <item name="flow_horizontalAlign">center</item>
     </style>
 
-    <style name="darka_zure_text_bold">
+    <style name="grey_text_smol">
+        <item name="fontFamily">@font/montserrat_bold</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/grey</item>
+        <item name="flow_horizontalAlign">center</item>
+    </style>
+
+    <style name="dark_azure_text_bold">
         <item name="fontFamily">@font/montserrat_bold</item>
         <item name="android:textColor">@color/dark_azure</item>
         <item name="flow_horizontalAlign">center</item>
