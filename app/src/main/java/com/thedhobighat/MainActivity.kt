@@ -17,9 +17,9 @@ class MainActivity: AppCompatActivity() {
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation_view)
         bottomNavigationView.setOnItemSelectedListener {
             when (it.itemId) {
-                R.id.home -> setCurrentFragment(FragHome())
-                R.id.cart -> setCurrentFragment(FragCart())
-                R.id.orders -> setCurrentFragment(FragOrderHistory())
+                R.id.nav_home -> setCurrentFragment(FragHome())
+                R.id.nav_cart -> setCurrentFragment(FragCart())
+                R.id.nav_orders -> setCurrentFragment(FragOrderHistory())
                 else -> { setCurrentFragment(FragHome()) }
             }
             true

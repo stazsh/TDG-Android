@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import retrofit2.HttpException
 import java.io.IOException
 
@@ -23,6 +24,8 @@ class FragOrderHistory : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.frag_order_history, container, false)
+        requireActivity().findViewById<BottomNavigationView>(R.id.bottom_navigation_view).menu.findItem(R.id.nav_orders).isChecked = true
+
         val api = RetrofitInstance.getInstance().create(TdgApi::class.java)
         val sharedPreferences: SharedPreferences? =
             activity?.getSharedPreferences("TDG_APP", Context.MODE_PRIVATE)

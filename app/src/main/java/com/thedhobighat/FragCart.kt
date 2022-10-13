@@ -29,6 +29,8 @@ class FragCart : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.frag_cart, container, false)
 
+        requireActivity().findViewById<BottomNavigationView>(R.id.bottom_navigation_view).menu.findItem(R.id.nav_cart).isChecked = true
+
         val items = Array<TextView>(21) { i -> view.findViewById(intArrayOf(
             R.id.fw_tv_blazer_value,
             R.id.fw_tv_shirt_value,

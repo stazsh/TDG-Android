@@ -1,6 +1,7 @@
 package com.thedhobighat
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -17,7 +18,7 @@ class FragHome() : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.frag_home, container, false)
 
-        container?.findViewById<BottomNavigationView>(R.id.bottom_navigation_view)?.selectedItemId = R.id.home
+        requireActivity().findViewById<BottomNavigationView>(R.id.bottom_navigation_view).menu.findItem(R.id.nav_home).isChecked = true
 
         view.findViewById<ConstraintLayout>(R.id.clFormalWash).setOnClickListener {
             val bundle = Bundle()
