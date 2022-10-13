@@ -30,6 +30,8 @@ class FragOrderHistory : Fragment() {
         val sharedPreferences: SharedPreferences? =
             activity?.getSharedPreferences("TDG_APP", Context.MODE_PRIVATE)
 
+        sharedPreferences?.edit()?.putInt("active_fragment", 2)?.apply()
+
         lifecycleScope.launchWhenCreated {
             val response = try {
                 api.getOrderHistory("Bearer ${sharedPreferences?.getString("jwt", "NULL")}")

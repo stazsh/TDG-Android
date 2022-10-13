@@ -1,5 +1,7 @@
 package com.thedhobighat
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -19,6 +21,9 @@ class FragHome() : Fragment() {
         val view = inflater.inflate(R.layout.frag_home, container, false)
 
         requireActivity().findViewById<BottomNavigationView>(R.id.bottom_navigation_view).menu.findItem(R.id.nav_home).isChecked = true
+
+        val sharedPreferences: SharedPreferences? = activity?.getSharedPreferences("TDG_APP", Context.MODE_PRIVATE)
+        sharedPreferences?.edit()?.putInt("active_fragment", 0)?.apply()
 
         view.findViewById<ConstraintLayout>(R.id.clFormalWash).setOnClickListener {
             val bundle = Bundle()

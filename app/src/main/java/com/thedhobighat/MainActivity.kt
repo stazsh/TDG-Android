@@ -1,12 +1,10 @@
 package com.thedhobighat
 
 import android.os.Bundle
-import android.view.View
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentContainer
-import androidx.fragment.app.FragmentContainerView
-import androidx.fragment.app.findFragment
+import androidx.fragment.app.FragmentManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity: AppCompatActivity() {
@@ -17,23 +15,37 @@ class MainActivity: AppCompatActivity() {
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation_view)
         bottomNavigationView.setOnItemSelectedListener {
             when (it.itemId) {
-                R.id.nav_home -> setCurrentFragment(FragHome())
-                R.id.nav_cart -> setCurrentFragment(FragCart())
-                R.id.nav_orders -> setCurrentFragment(FragOrderHistory())
-                else -> { setCurrentFragment(FragHome()) }
+                R.id.nav_home -> setCurrentFragment(0, FragHome())
+                R.id.nav_cart -> setCurrentFragment(1, FragCart())
+                R.id.nav_orders -> setCurrentFragment(2, FragOrderHistory())
+                else -> { setCurrentFragment(0, FragHome()) }
             }
             true
         }
+
+        bottomNavigationView.setOnItemReselectedListener { }
     }
 
-    private fun setCurrentFragment(fragment: Fragment) {
+    private fun setCurrentFragment(fragmentIndex: Int, fragment: Fragment) {
         supportFragmentManager.beginTransaction().apply {
-            setCustomAnimations(
-                R.anim.slide_in_from_right,
-                R.anim.slide_out_to_left,
-                R.anim.slide_in_from_left,
-                R.anim.slide_out_to_right
-            )
+            if (fragmentIndex - getSharedPreferences("TDG_APP", MODE_PRIVATE).getInt("active_fragment", 0) > 0)
+                setCustomAnimations(
+                    R.anim.slide_in_from_right,
+                    R.anim.slide_out_to_left,
+                    R.anim.slide_in_from_left,
+                    R.anim.slide_out_to_right
+                )
+            else
+                setCustomAnimations(
+                    R.anim.slide_in_from_left,
+                    R.anim.slide_out_to_right,
+                    R.anim.slide_out_to_left,
+                    R.anim.slide_in_from_right,
+                )
+
+            val bundle = Bundle()
+            bundle.putInt("index", fragmentIndex)
+            fragment.arguments = bundle
             replace(R.id.main_fragment, fragment)
             addToBackStack(null)
             commit()

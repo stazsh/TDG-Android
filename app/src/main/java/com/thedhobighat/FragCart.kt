@@ -29,6 +29,9 @@ class FragCart : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.frag_cart, container, false)
 
+        val sharedPreferences: SharedPreferences? = activity?.getSharedPreferences("TDG_APP", Context.MODE_PRIVATE)
+        sharedPreferences?.edit()?.putInt("active_fragment", 1)?.apply()
+
         requireActivity().findViewById<BottomNavigationView>(R.id.bottom_navigation_view).menu.findItem(R.id.nav_cart).isChecked = true
 
         val items = Array<TextView>(21) { i -> view.findViewById(intArrayOf(
@@ -56,8 +59,6 @@ class FragCart : Fragment() {
             R.id.si_tv_laddown_value,
             R.id.si_tv_other_value
         )[i])}
-
-        val sharedPreferences: SharedPreferences? = activity?.getSharedPreferences("TDG_APP", Context.MODE_PRIVATE)
 
         val refreshView: (existingCart: String?) -> Unit = { existingCart ->
             if (!(existingCart == null || existingCart === "")) {
