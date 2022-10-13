@@ -19,3 +19,15 @@ data class CartInstance(
     var formal_wash: List<Serviceable>,
     var steam_iron: List<Serviceable>
 )
+
+data class PostOrderReq(
+    var address: String
+)
+
+data class PostRegister(
+    var email: String,
+    var password: String,
+    var name: String,
+    var phone: String,
+    var address: String
+)

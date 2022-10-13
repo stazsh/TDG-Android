@@ -15,7 +15,7 @@ class FragPayment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.frag_payment, container, false)
-        view.findViewById<ConstraintLayout>(R.id.navigate_back).setOnClickListener {
+        /* view.findViewById<ConstraintLayout>(R.id.navigate_back).setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.action_fragPayment_to_fragSubmitYourInfo)
         }
 
@@ -33,7 +33,7 @@ class FragPayment : Fragment() {
 
         view.findViewById<ConstraintLayout>(R.id.item4).setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.action_fragPayment_to_fragTrackYourOrder)
-        }
+        } */
         return view
     }
 }

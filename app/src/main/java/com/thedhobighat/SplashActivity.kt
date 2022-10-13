@@ -14,7 +14,7 @@ class SplashActivity : AppCompatActivity() {
         Handler().postDelayed(Runnable { // This method will be executed once the timer is over
             val i = Intent(this, LoginActivity::class.java)
             val j = Intent(this, MainActivity::class.java)
-            val jwt: String? = this.getSharedPreferences("TDG_APP", MODE_PRIVATE).getString("JWT", null)
+            val jwt: String? = this.getSharedPreferences("TDG_APP", MODE_PRIVATE).getString("jwt", null)
 
             if (jwt == null)
                 startActivity(i)

@@ -7,7 +7,7 @@ object RetrofitInstance {
 
     fun getInstance(): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("https://tdg-api.onrender.com/api/v1/usr/")
+            .baseUrl("https://tdg-apiv1.herokuapp.com/api/v1/usr/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }

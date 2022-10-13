@@ -12,12 +12,15 @@
         <entry key="app/src/main/res/drawable/round_all_around_but_grey.xml" value="0.3395" />
         <entry key="app/src/main/res/drawable/round_all_around_but_red.xml" value="0.3395" />
         <entry key="app/src/main/res/drawable/rounded_all_around.xml" value="0.3535" />
+        <entry key="app/src/main/res/drawable/rounded_all_around_but_rounder.xml" value="0.3725" />
         <entry key="app/src/main/res/drawable/rounded_top_rectangle.xml" value="0.3535" />
         <entry key="app/src/main/res/drawable/splash_background.xml" value="0.3445" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_register.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_signin_signup.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.33" />
         <entry key="app/src/main/res/layout/choose_items.xml" value="0.4" />
+        <entry key="app/src/main/res/layout/frag_cart.xml" value="0.4783683559950556" />
         <entry key="app/src/main/res/layout/frag_choose_items.xml" value="0.29238440616500455" />
         <entry key="app/src/main/res/layout/frag_home.xml" value="0.2875905797101449" />
         <entry key="app/src/main/res/layout/frag_laundry_basket.xml" value="0.25" />
@@ -30,6 +33,7 @@
         <entry key="app/src/main/res/layout/fragment_frag_choose_items.xml" value="0.26811594202898553" />
         <entry key="app/src/main/res/layout/fragment_frag_home.xml" value="0.26811594202898553" />
         <entry key="app/src/main/res/layout/payment.xml" value="0.4" />
+        <entry key="app/src/main/res/layout/rv_order_item.xml" value="0.67" />
         <entry key="app/src/main/res/layout/submit_your_info.xml" value="0.4" />
         <entry key="app/src/main/res/layout/track_your_order.xml" value="0.4" />
         <entry key="app/src/main/res/layout/what_wash.xml" value="0.6" />

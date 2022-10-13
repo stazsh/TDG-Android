@@ -2,8 +2,10 @@ package com.thedhobighat
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
@@ -33,8 +35,9 @@ class LoginActivity: AppCompatActivity() {
                     return@launchWhenCreated
                 }
                 if (response.body() != null) {
-                    this@LoginActivity.getSharedPreferences("TDG_APP", MODE_PRIVATE).edit().putString("JWT", response.body()!!.jwt).apply()
-                    this@LoginActivity.getSharedPreferences("TDG_APP", MODE_PRIVATE).edit().putString("JWT", response.body()!!.jwt_refresh).apply()
+                    Log.i("TDG", response.body().toString())
+                    this@LoginActivity.getSharedPreferences("TDG_APP", MODE_PRIVATE).edit().putString("jwt", response.body()!!.jwt).apply()
+                    this@LoginActivity.getSharedPreferences("TDG_APP", MODE_PRIVATE).edit().putString("jwt_refresh", response.body()!!.jwt_refresh).apply()
                     val activityMain = Intent(this@LoginActivity, MainActivity::class.java)
                     startActivity(activityMain)
                     finish()
@@ -42,6 +45,12 @@ class LoginActivity: AppCompatActivity() {
                     Toast.makeText(this@LoginActivity, "Request rejected: invalid credentials", Toast.LENGTH_SHORT).show()
                 }
             }
+        }
+
+        findViewById<TextView>(R.id.register_now).setOnClickListener {
+            val activityRegister = Intent(this@LoginActivity, RegisterActivity::class.java)
+            startActivity(activityRegister)
+            finish()
         }
     }
 }

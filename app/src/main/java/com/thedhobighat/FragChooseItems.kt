@@ -2,7 +2,9 @@ package com.thedhobighat
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.icu.number.IntegerWidth
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +13,7 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.navigation.Navigation
+import androidx.fragment.app.FragmentManager
 import com.google.gson.Gson
 
 class FragChooseItems : Fragment() {
@@ -126,39 +128,49 @@ class FragChooseItems : Fragment() {
 
         val serviceableType = arguments?.getString("type")
         view.findViewById<ConstraintLayout>(R.id.add_to_cart_btn).setOnClickListener{
+            if (!itemsHaveNonZero(items)) {
+                Toast.makeText(activity, "No items selected", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
             val sharedPreferences: SharedPreferences? = activity?.getSharedPreferences("TDG_APP", Context.MODE_PRIVATE)
             if (sharedPreferences != null) {
-                if (!sharedPreferences.contains("cart"))
-                    sharedPreferences.edit().putString("cart", Gson().toJson(CartInstance(
-                        listOf(
-                            Serviceable("blazer", 0),
-                            Serviceable("shirt_and_tshirt", 0),
-                            Serviceable("pant_and_trousers", 0),
-                            Serviceable("saree", 0),
-                            Serviceable("ladies_upper", 0),
-                            Serviceable("ladies_lower", 0),
-                            Serviceable("cloths_and_others", 0)
-                        ), listOf(
-                            Serviceable("blazer", 0),
-                            Serviceable("shirt_and_tshirt", 0),
-                            Serviceable("pant_and_trousers", 0),
-                            Serviceable("saree", 0),
-                            Serviceable("ladies_upper", 0),
-                            Serviceable("ladies_lower", 0),
-                            Serviceable("cloths_and_others", 0)
-                        ), listOf(
-                            Serviceable("blazer", 0),
-                            Serviceable("shirt_and_tshirt", 0),
-                            Serviceable("pant_and_trousers", 0),
-                            Serviceable("saree", 0),
-                            Serviceable("ladies_upper", 0),
-                            Serviceable("ladies_lower", 0),
-                            Serviceable("cloths_and_others", 0)
+                val existingCart = sharedPreferences.getString("cart", null)
+                if (existingCart == null) {
+                    sharedPreferences.edit().putString(
+                        "cart", Gson().toJson(
+                            CartInstance(
+                                listOf(
+                                    Serviceable("blazer", 0),
+                                    Serviceable("shirt_and_tshirt", 0),
+                                    Serviceable("pant_and_trousers", 0),
+                                    Serviceable("saree", 0),
+                                    Serviceable("ladies_upper", 0),
+                                    Serviceable("ladies_lower", 0),
+                                    Serviceable("cloths_and_others", 0)
+                                ), listOf(
+                                    Serviceable("blazer", 0),
+                                    Serviceable("shirt_and_tshirt", 0),
+                                    Serviceable("pant_and_trousers", 0),
+                                    Serviceable("saree", 0),
+                                    Serviceable("ladies_upper", 0),
+                                    Serviceable("ladies_lower", 0),
+                                    Serviceable("cloths_and_others", 0)
+                                ), listOf(
+                                    Serviceable("blazer", 0),
+                                    Serviceable("shirt_and_tshirt", 0),
+                                    Serviceable("pant_and_trousers", 0),
+                                    Serviceable("saree", 0),
+                                    Serviceable("ladies_upper", 0),
+                                    Serviceable("ladies_lower", 0),
+                                    Serviceable("cloths_and_others", 0)
+                                )
+                            )
                         )
-                    ))).apply()
+                    ).apply()
+                }
 
-                val existingCart: String? = sharedPreferences.getString("cart", null)
-                val parsedExistingCart = Gson().fromJson(existingCart, CartInstance::class.java)
+                val parsedExistingCart = Gson().fromJson(sharedPreferences.getString("cart", null), CartInstance::class.java)
 
                 if (serviceableType === "FORMAL_WASH") {
                     for (i in 0..6)
@@ -172,35 +184,47 @@ class FragChooseItems : Fragment() {
                 }
 
                 sharedPreferences.edit().putString("cart", Gson().toJson(parsedExistingCart)).apply()
-                Toast.makeText(activity, sharedPreferences.getString("cart", null), Toast.LENGTH_LONG).show()
+                Toast.makeText(activity, "Saved to cart", Toast.LENGTH_LONG).show()
             }
         }
 
         var counter = 0
         val sharedPreferences: SharedPreferences? = activity?.getSharedPreferences("TDG_APP", Context.MODE_PRIVATE)
-        items.forEach { i ->
-            if (serviceableType === "FORMAL_WASH") {
-                i.text = Gson().fromJson(
-                    sharedPreferences?.getString("cart", null),
-                    CartInstance::class.java
-                ).formal_wash.elementAt(counter++).quantity.toString()
-            } else if (serviceableType === "DRY_WASH") {
-                i.text = Gson().fromJson(
-                    sharedPreferences?.getString("cart", null),
-                    CartInstance::class.java
-                ).dry_wash.elementAt(counter++).quantity.toString()
-            }
-            else if (serviceableType === "STEAM_IRON") {
-                i.text = Gson().fromJson(
-                    sharedPreferences?.getString("cart", null),
-                    CartInstance::class.java
-                ).steam_iron.elementAt(counter++).quantity.toString()
+        val existingCart = sharedPreferences?.getString("cart", null)
+
+        if (!(existingCart == null || existingCart === "")) {
+            items.forEach { i ->
+                if (serviceableType === "FORMAL_WASH") {
+                    i.text = Gson().fromJson(
+                        sharedPreferences.getString("cart", null),
+                        CartInstance::class.java
+                    ).formal_wash.elementAt(counter++).quantity.toString()
+                } else if (serviceableType === "DRY_WASH") {
+                    i.text = Gson().fromJson(
+                        sharedPreferences.getString("cart", null),
+                        CartInstance::class.java
+                    ).dry_wash.elementAt(counter++).quantity.toString()
+                } else if (serviceableType === "STEAM_IRON") {
+                    i.text = Gson().fromJson(
+                        sharedPreferences.getString("cart", null),
+                        CartInstance::class.java
+                    ).steam_iron.elementAt(counter++).quantity.toString()
+                }
             }
         }
 
         view.findViewById<ConstraintLayout>(R.id.navigate_back).setOnClickListener{
-            Navigation.findNavController(view).navigate(R.id.action_fragChooseItems_to_fragHome)
+            Log.i("tdg", "back pressed")
+            activity?.supportFragmentManager?.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
         }
         return view
+    }
+
+    private fun itemsHaveNonZero(items: Array<TextView>) : Boolean {
+        items.forEach { i ->
+            if (Integer.parseInt(i.text.toString()) > 0)
+                return true
+        }
+        return false
     }
 }
