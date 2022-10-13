@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.fragment.app.FragmentManager
 import androidx.navigation.Navigation
 import com.airbnb.paris.extensions.style
 import com.google.gson.Gson
@@ -31,6 +32,10 @@ class FragTrackYourOrder : Fragment() {
 
         if (status.delivered.state)
             view.findViewById<ConstraintLayout>(R.id.bool_delivered).setBackgroundResource(R.drawable.round_all_around_but_red)
+
+        view.findViewById<ConstraintLayout>(R.id.navigate_back).setOnClickListener {
+            activity?.supportFragmentManager?.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
+        }
 
         return view
     }
