@@ -74,6 +74,17 @@ class FragSubmitYourInfo : Fragment() {
                 if (response.body() != null)
                     Toast.makeText(activity, "Order has been placed \uD83C\uDF89", Toast.LENGTH_LONG).show()
             }
+
+            parentFragmentManager.beginTransaction().apply {
+                setCustomAnimations(
+                    R.anim.slide_in_from_right,
+                    R.anim.slide_out_to_left,
+                    R.anim.slide_in_from_left,
+                    R.anim.slide_out_to_right
+                )
+                replace(R.id.main_fragment, FragOrderHistory())
+                commit()
+            }
         }
 
         return view
