@@ -9,6 +9,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -54,6 +56,11 @@ class FragOrderHistory : Fragment() {
                 rv.layoutManager = LinearLayoutManager(activity)
                 rv.adapter = adapter
             }
+        }
+
+        view.findViewById<ConstraintLayout>(R.id.navigate_back).setOnClickListener{
+            Log.i("tdg", "back pressed")
+            activity?.supportFragmentManager?.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
         }
 
         return view
