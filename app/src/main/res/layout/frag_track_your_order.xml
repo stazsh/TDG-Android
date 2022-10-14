@@ -75,12 +75,13 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
+                        android:id="@+id/verification_code"
                         android:layout_height="wrap_content"
-                        style="@style/azure_header"
+                        style="@style/verif_code_azure"
                         android:layout_width="match_parent"
-                        android:layout_margin="5dp"
+                        android:layout_margin="10dp"
                         android:gravity="center"
-                        android:text="1 2 3 4 5 6"
+                        android:text="Loading..."
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/textView3" />
@@ -88,12 +89,12 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/bool_accepted"
                     android:layout_width="match_parent"
                     android:layout_marginStart="30dp"
                     android:layout_marginEnd="30dp"
-                    android:layout_marginTop="30dp"
                     android:layout_height="50dp"
-                    android:background="@drawable/round_all_around_but_red">
+                    android:background="@drawable/round_all_around_but_darkazure_and_rounder">
 
                     <TextView
                         style="@style/white_subtitle"
@@ -114,6 +115,7 @@
                     app:srcCompat="@drawable/ic_downarrow" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/bool_pickedup"
                     android:layout_width="match_parent"
                     android:layout_marginStart="30dp"
                     android:layout_marginEnd="30dp"
@@ -140,6 +142,7 @@
                     app:srcCompat="@drawable/ic_downarrow" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/bool_onprocess"
                     android:layout_width="match_parent"
                     android:layout_marginStart="30dp"
                     android:layout_marginEnd="30dp"
@@ -166,6 +169,7 @@
                     app:srcCompat="@drawable/ic_downarrow" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/bool_delivered"
                     android:layout_width="match_parent"
                     android:layout_marginStart="30dp"
                     android:layout_marginEnd="30dp"

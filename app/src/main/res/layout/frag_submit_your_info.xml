@@ -60,14 +60,14 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
+                    android:layout_marginTop="30dp"
                     android:layout_marginStart="30dp"
                     android:layout_marginEnd="30dp"
-                    android:layout_marginTop="30dp"
                     android:layout_height="70dp"
                     android:background="@drawable/round_all_around_but_grey">
 
                     <EditText
-                        android:id="@+id/editTextTextPersonName"
+                        android:id="@+id/et_full_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@null"
@@ -84,14 +84,14 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
+                    android:layout_marginTop="30dp"
                     android:layout_marginStart="30dp"
                     android:layout_marginEnd="30dp"
-                    android:layout_marginTop="30dp"
                     android:layout_height="70dp"
                     android:background="@drawable/round_all_around_but_grey">
 
                     <EditText
-                        android:id="@+id/editTextTextPersonName"
+                        android:id="@+id/et_address"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@null"
@@ -99,7 +99,7 @@
                         android:ems="10"
                         style="@style/grey_text_smol"
                         android:inputType="textPostalAddress"
-                        android:hint="Address (Line 1)"
+                        android:hint="Address (with locality, city, PIN)"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -109,21 +109,21 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_marginStart="30dp"
-                    android:layout_marginEnd="30dp"
                     android:layout_marginTop="30dp"
+                    android:layout_marginEnd="30dp"
                     android:layout_height="70dp"
                     android:background="@drawable/round_all_around_but_grey">
 
                     <EditText
-                        android:id="@+id/editTextTextPersonName"
+                        android:id="@+id/et_email"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@null"
                         android:layout_margin="20dp"
                         android:ems="10"
                         style="@style/grey_text_smol"
-                        android:inputType="textPostalAddress"
-                        android:hint="Locality"
+                        android:inputType="textEmailAddress"
+                        android:hint="Email"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -133,61 +133,13 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_marginStart="30dp"
-                    android:layout_marginEnd="30dp"
                     android:layout_marginTop="30dp"
+                    android:layout_marginEnd="30dp"
                     android:layout_height="70dp"
                     android:background="@drawable/round_all_around_but_grey">
 
                     <EditText
-                        android:id="@+id/editTextTextPersonName"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@null"
-                        android:layout_margin="20dp"
-                        android:ems="10"
-                        style="@style/grey_text_smol"
-                        android:inputType="textPostalAddress"
-                        android:hint="City"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginEnd="30dp"
-                    android:layout_marginTop="30dp"
-                    android:layout_height="70dp"
-                    android:background="@drawable/round_all_around_but_grey">
-
-                    <EditText
-                        android:id="@+id/editTextTextPersonName"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@null"
-                        android:layout_margin="20dp"
-                        android:ems="10"
-                        style="@style/grey_text_smol"
-                        android:inputType="number"
-                        android:hint="PIN Code"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginEnd="30dp"
-                    android:layout_marginTop="30dp"
-                    android:layout_height="70dp"
-                    android:background="@drawable/round_all_around_but_grey">
-
-                    <EditText
-                        android:id="@+id/editTextTextPersonName"
+                        android:id="@+id/et_phone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@null"
@@ -195,7 +147,7 @@
                         android:ems="10"
                         style="@style/grey_text_smol"
                         android:inputType="phone"
-                        android:hint="Mobile"
+                        android:hint="Phone number"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"

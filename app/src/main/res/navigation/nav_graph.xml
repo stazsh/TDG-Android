@@ -29,13 +29,6 @@
             app:exitAnim="@anim/slide_out_to_left"
             app:popEnterAnim="@anim/slide_in_from_right"
             app:popExitAnim="@anim/slide_out_to_left" />
-        <action
-            android:id="@+id/action_fragChooseItems_to_fragHome"
-            app:destination="@id/fragHome"
-            app:enterAnim="@anim/slide_in_from_left"
-            app:exitAnim="@anim/slide_out_to_right"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/fragSubmitYourInfo"
@@ -49,13 +42,6 @@
             app:exitAnim="@anim/slide_out_to_left"
             app:popEnterAnim="@anim/slide_in_from_right"
             app:popExitAnim="@anim/slide_out_to_left" />
-        <action
-            android:id="@+id/action_fragSubmitYourInfo_to_fragChooseItems"
-            app:destination="@id/fragChooseItems"
-            app:enterAnim="@anim/slide_in_from_left"
-            app:exitAnim="@anim/slide_out_to_right"
-            app:popEnterAnim="@anim/slide_in_from_left"
-            app:popExitAnim="@anim/slide_out_to_right" />
     </fragment>
     <fragment
         android:id="@+id/fragPayment"
@@ -69,25 +55,10 @@
             app:exitAnim="@anim/slide_out_to_left"
             app:popEnterAnim="@anim/slide_in_from_right"
             app:popExitAnim="@anim/slide_out_to_left" />
-        <action
-            android:id="@+id/action_fragPayment_to_fragSubmitYourInfo"
-            app:destination="@id/fragSubmitYourInfo"
-            app:enterAnim="@anim/slide_in_from_left"
-            app:exitAnim="@anim/slide_out_to_right"
-            app:popEnterAnim="@anim/slide_in_from_left"
-            app:popExitAnim="@anim/slide_out_to_right" />
     </fragment>
     <fragment
         android:id="@+id/fragTrackYourOrder"
         android:name="com.thedhobighat.FragTrackYourOrder"
         android:label="frag_track_your_order"
-        tools:layout="@layout/frag_track_your_order" >
-        <action
-            android:id="@+id/action_fragTrackYourOrder_to_fragPayment"
-            app:destination="@id/fragPayment"
-            app:enterAnim="@anim/slide_in_from_left"
-            app:exitAnim="@anim/slide_out_to_right"
-            app:popEnterAnim="@anim/slide_in_from_left"
-            app:popExitAnim="@anim/slide_out_to_right" />
-    </fragment>
+        tools:layout="@layout/frag_track_your_order" />
 </navigation>
