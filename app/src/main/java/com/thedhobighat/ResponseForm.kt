@@ -31,6 +31,7 @@ data class GetOrderResponsePayloadItem(
     var _id: String,
     var customer: String,
     var address: String,
+    var verif_code: String,
     var todo: CartInstance,
     var status: GetOrderResponsePayloadItemStatus,
     var createdAt: String,
