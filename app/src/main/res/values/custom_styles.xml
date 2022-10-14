@@ -51,4 +51,10 @@
     <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
         <item name="android:windowBackground">@drawable/splash_background</item>
     </style>
+
+    <style name="verif_code_azure">
+        <item name="fontFamily">@font/montserrat_bold</item>
+        <item name="android:textColor">@color/dark_azure</item>
+        <item name="android:textSize">38sp</item>
+    </style>
 </resources>

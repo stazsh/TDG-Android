@@ -12,7 +12,8 @@ data class GetProfileResponsePayload(
 data class GetOrderResponsePayloadItemStatusGenericAssignee(
     var state: Boolean,
     var time: String,
-    var assignee: String
+    var assignee: String,
+    var verif_code: String
 )
 
 data class GetOrderResponsePayloadItemStatusGenericNoAssignee(
@@ -31,7 +32,6 @@ data class GetOrderResponsePayloadItem(
     var _id: String,
     var customer: String,
     var address: String,
-    var verif_code: String,
     var todo: CartInstance,
     var status: GetOrderResponsePayloadItemStatus,
     var createdAt: String,
