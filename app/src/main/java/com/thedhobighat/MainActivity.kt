@@ -47,7 +47,6 @@ class MainActivity: AppCompatActivity() {
             bundle.putInt("index", fragmentIndex)
             fragment.arguments = bundle
             replace(R.id.main_fragment, fragment)
-            addToBackStack(null)
             commit()
         }
     }
