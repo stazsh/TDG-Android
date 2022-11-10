@@ -22,4 +22,7 @@ interface TdgApi {
 
     @POST("register")
     suspend fun postRegister(@Body postRegister: PostRegister) : Response<GenericResponse>
+
+    @POST("calc-bill")
+    suspend fun postCalcBill(@Header("Authorization") jwt: String, @Body todo: CartInstance) : Response<CalcBillResponse>
 }
