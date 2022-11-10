@@ -34,7 +34,9 @@ data class GetOrderResponsePayloadItem(
     var customer_id: String,
     var customer_name: String,
     var address: String,
+    var phone: String,
     var todo: CartInstance,
+    var bill: String,
     var status: GetOrderResponsePayloadItemStatus,
     var createdAt: String,
     var updatedAt: String
@@ -53,6 +55,12 @@ data class LoginResponse(
 data class PostCartResponse(
     var success: Boolean,
     var message: String
+)
+
+data class CalcBillResponse(
+    var success: Boolean,
+    var message: String,
+    var payload: String // bill amount here
 )
 
 data class GenericResponse(
