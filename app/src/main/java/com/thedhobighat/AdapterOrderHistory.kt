@@ -25,8 +25,8 @@ class AdapterOrderHistory(private var orders: List<GetOrderResponsePayloadItem>,
     override fun onBindViewHolder(holder: OrderViewHolder, position: Int) {
         holder.itemView.apply {
             findViewById<TextView>(R.id.tv_orderid_value).text = orders[position]._id
-            findViewById<TextView>(R.id.tv_createdat_value).text =
-                orders[position].status.accepted.time
+            findViewById<TextView>(R.id.tv_createdat_value).text = orders[position].status.accepted.time
+            findViewById<TextView>(R.id.tv_bill_value).text = orders[position].bill
 
             var status = "NULL"
             if (orders[position].status.accepted.state) {
