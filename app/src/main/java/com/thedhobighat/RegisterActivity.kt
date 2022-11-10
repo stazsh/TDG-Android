@@ -30,6 +30,7 @@ class RegisterActivity : AppCompatActivity() {
                     api.postRegister(PostRegister(email, password, name, phone, address))
                 } catch(e: IOException) {
                     Toast.makeText(this@RegisterActivity, "IOException, you might not have internet connection", Toast.LENGTH_SHORT).show()
+                    Log.i("registration error", e.stackTraceToString())
                     return@launchWhenCreated
                 } catch (e: HttpException) {
                     Toast.makeText(this@RegisterActivity, e.message, Toast.LENGTH_SHORT).show()
@@ -41,7 +42,7 @@ class RegisterActivity : AppCompatActivity() {
                     startActivity(activityLogin)
                     finish()
                 } else {
-                    Toast.makeText(this@RegisterActivity, "Request rejected: invalid credentials", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@RegisterActivity, "Request rejected: duplicate credentials", Toast.LENGTH_SHORT).show()
                 }
             }
         }
