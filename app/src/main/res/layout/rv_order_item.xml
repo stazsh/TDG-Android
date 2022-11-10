@@ -50,6 +50,21 @@
             android:text="Loading..." />
 
         <TextView
+            android:id="@+id/tv_bill"
+            style="@style/dark_azure_text_bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bill" />
+
+        <TextView
+            android:id="@+id/tv_bill_value"
+            style="@style/grey_text_smol"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="Loading..." />
+
+        <TextView
             android:id="@+id/tv_status"
             style="@style/dark_azure_text_bold"
             android:layout_width="match_parent"
