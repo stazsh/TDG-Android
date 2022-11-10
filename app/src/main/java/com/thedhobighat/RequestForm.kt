@@ -21,7 +21,9 @@ data class CartInstance(
 )
 
 data class PostOrderReq(
-    var address: String
+    var customer_name: String,
+    var address: String,
+    var phone: String
 )
 
 data class PostRegister(
