@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -17,6 +18,13 @@ import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.gson.Gson
+import okhttp3.MediaType
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.RequestBody
+import okhttp3.internal.Util.EMPTY_REQUEST
+import org.json.JSONObject
+import org.w3c.dom.Text
 import retrofit2.HttpException
 import java.io.IOException
 
@@ -83,6 +91,35 @@ class FragCart : Fragment() {
 
         refreshView(sharedPreferences?.getString("cart", null))
 
+        val api = RetrofitInstance.getInstance().create(TdgApi::class.java)
+
+        val icart: CartInstance? = Gson().fromJson(sharedPreferences?.getString("cart", null), CartInstance::class.java)
+        Log.i("cart", icart.toString())
+
+        if (icart != null) {
+            lifecycleScope.launchWhenCreated {
+                val response = try {
+                    api.postCalcBill(
+                        "Bearer ${sharedPreferences?.getString("jwt", "NULL")}",
+                        CartInstance(icart.dry_wash, icart.formal_wash, icart.steam_iron)
+                    )
+                } catch (e: IOException) {
+                    Log.i("error", e.stackTraceToString())
+                    return@launchWhenCreated
+                } catch (e: HttpException) {
+                    Log.i("error", e.stackTraceToString())
+                    return@launchWhenCreated
+                }
+
+                if (response.isSuccessful) {
+                    view.findViewById<TextView>(R.id.tv_bill_value).text = response.body()?.payload
+                    Log.i("bill response", response.body().toString())
+                }
+            }
+        } else {
+            view.findViewById<TextView>(R.id.tv_bill_value).text = "₹ 0.00"
+        }
+
         view.findViewById<ConstraintLayout>(R.id.clear_cart_btn).setOnClickListener {
             sharedPreferences?.edit()?.remove("cart")?.apply()
             cleanView()
@@ -93,13 +130,11 @@ class FragCart : Fragment() {
             if (sharedPreferences?.getString("cart", null) == null)
                 return@setOnClickListener Toast.makeText(activity, "Cart is empty, add a few items from the home screen and come back", Toast.LENGTH_SHORT).show()
 
-            val api = RetrofitInstance.getInstance().create(TdgApi::class.java)
-
             lifecycleScope.launchWhenCreated {
                 val response = try {
-                    val cart = Gson().fromJson(sharedPreferences?.getString("cart", null), CartInstance::class.java)
+                    val cart = Gson().fromJson(sharedPreferences.getString("cart", null), CartInstance::class.java)
                     api.postCart(
-                        "Bearer ${sharedPreferences?.getString("jwt", "NULL")}",
+                        "Bearer ${sharedPreferences.getString("jwt", "NULL")}",
                         CartInstance(cart.dry_wash, cart.formal_wash, cart.steam_iron)
                     )
                 } catch(e: IOException) {
