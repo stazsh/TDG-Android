@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">The Dhobi Ghat</string>
+    <string name="wall_desc">Chair, basket and a white wall</string>
+    <string name="wall_text">Is your laundry basket full?</string>
+    <string name="header_text">Welcome to \nThe Dhobi Ghat</string>
+    <string name="subheader_text">Choose the laundry service which you are interested in today</string>
+    <string name="tile1">Dry Wash</string>
+    <string name="tile2">Formal Wash</string>
+    <string name="tile3">Steam Iron</string>
+    <string name="choose_items">Choose Items</string>
+    <string name="blazer">Blazer</string>
+    <string name="submit_your_info">Submit Your Info</string>
+    <string name="make_payment">Make Payment</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="fetching">Fetching...</string>
+    <string name="total_bill_in_indian_rupees">Total bill (in Indian Rupees):</string>
+</resources>
