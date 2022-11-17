@@ -1,3 +1,3 @@
 # The-Dhobi-Ghat
 
-Android app for The Dhobi Ghat project
+Consumer-side android app for The Dhobi Ghat project
